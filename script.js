@@ -29,7 +29,7 @@ const customers = [
   },
 ];
 
-// Read request handlers
+// GET request handlers
 app.get("/", (req, res) => {
   res.send("Welcome to REST API");
 });
@@ -48,6 +48,7 @@ app.get("/api/customers/:id", (req, res) => {
   res.send(customer);
 });
 
+// POST request handlers
 app.post("/api/customers", (req, res) => {
   const { error } = validateCustomer(req.body);
 
@@ -64,6 +65,7 @@ app.post("/api/customers", (req, res) => {
   res.send(customer);
 });
 
+// PUT request handler
 app.put("/api/customers/:id", (req, res) => {
   const customer = customers.find((customer) => {
     return customer.id === parseInt(req.params.id);
@@ -84,6 +86,7 @@ app.put("/api/customers/:id", (req, res) => {
   res.send(customer);
 });
 
+// DELETE request handler
 app.delete("/api/customers/:id", (req, res) => {
   const customer = customers.find((customer) => {
     return customer.id === parseInt(req.params.id);
